@@ -1,0 +1,30 @@
+.nav {
+  height: 100px;
+  padding: 20px;
+  padding-right: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+}
+
+.nav h1 {
+  color: #9f9f9f;
+  cursor: pointer;
+}
+
+.navLink :hover {
+  color: #2b2929;
+}
+
+.nav ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+
+.nav ul li a {
+  margin: 5px 15px;
+}
