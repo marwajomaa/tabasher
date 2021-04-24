@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Card,
@@ -10,6 +11,7 @@ import {
 } from "@material-ui/core";
 
 import T from "./Typography";
+import Title from "./Title";
 
 const useStyles = makeStyles({
   btn: {
@@ -20,8 +22,9 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MediaCard({ course }) {
+export default function MediaCard({ course, courseDetails }) {
   const classes = useStyles();
+  const slicedText = course.description.slice(0, 175) + "...";
 
   return (
     <Card
@@ -50,11 +53,18 @@ export default function MediaCard({ course }) {
             text={course.price}
             color="textSecondary"
           />
-          <T variant="h5" component="h4" text={course.description} />
+          <T variant="h5" component="h4" text={slicedText} />
         </CardContent>
       </CardActionArea>
-      <CardActions style={{ background: "#f7f7f7", padding: "20px 0" }}>
-        <button
+      <CardActions
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          background: "#f7f7f7",
+        }}
+      >
+        <Button
+          href={courseDetails ? "/#" : `/course/${course.id}`}
           className={classes.btn}
           style={{
             margin: "0 auto",
@@ -68,8 +78,16 @@ export default function MediaCard({ course }) {
             fontWeight: "bold",
           }}
         >
-          اشترك الان
-        </button>
+          {courseDetails ? "شراء مباشر" : "اشترك الان"}
+        </Button>
+        {courseDetails && (
+          <div style={{ textAlign: "right", marginRight: "-120px" }}>
+            <Title text="متطلبات الدورة" />
+            {course.requirements?.map((item) => (
+              <h3>{item}</h3>
+            ))}
+          </div>
+        )}
       </CardActions>
     </Card>
   );

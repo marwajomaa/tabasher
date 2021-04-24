@@ -2,10 +2,9 @@ import React from "react";
 
 const Title = ({
   text,
-  fontSize,
+  fontSz,
   style = {
-    textAlign: "center",
-    fontSize: { fontSize } || 30,
+    fontSize: { fontSz } || 30,
     fontWeight: "bold",
   },
 }) => {

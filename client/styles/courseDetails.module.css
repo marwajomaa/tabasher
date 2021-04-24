@@ -1,0 +1,100 @@
+.courseContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem 4rem;
+}
+
+.contentLeft {
+  width: 30%;
+}
+
+.contentRight {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-left: 1rem;
+  margin-left: 1rem;
+}
+
+.contentRightTop {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 1.5rem;
+}
+
+.RightTopChild {
+  width: 50%;
+  text-align: right;
+}
+
+.RightTopChild h2 {
+  color: #6c757d;
+}
+
+.contentRightDescription {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  text-align: right;
+}
+
+.contentRightDescription span {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #6c757d;
+}
+
+.contentRightTable {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 10px 0 -5px #eee,
+    0 5px 1px -1px rgba(184, 171, 171, 0.15);
+  border: 1px solid #eee;
+  margin: 1rem 0;
+  border-radius: 5px;
+}
+
+.contentRightTable > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding: 0 1rem;
+  border: 1px solid #eee;
+  text-align: right;
+}
+
+.contentRightTable :first-child {
+  background: #00000008;
+}
+
+@media (max-width: 900px) {
+  .courseContainer {
+    padding: 0;
+  }
+  .contentLeft {
+    display: none;
+  }
+  .contentRight {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    text-align: right;
+  }
+}
+
+@media (max-width: 600px) {
+  .courseContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+  }
+  .contentLeft {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+  }
+}

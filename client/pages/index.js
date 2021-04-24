@@ -35,7 +35,8 @@ const courses = [
   },
 ];
 
-export default function Home() {
+export default function Home({ courses }) {
+  console.log(courses[0]);
   return (
     <>
       <Nav />
