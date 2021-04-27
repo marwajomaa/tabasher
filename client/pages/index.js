@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from "react";
+import { UserContext } from "../context/userContext";
 import Nav from "../components/Nav";
 import Hero from "../components/MainHero";
 import CoursesList from "../components/CoursesList";
@@ -8,37 +10,16 @@ import Footer from "../components/Footer";
 
 import styles from "../styles/Home.module.css";
 
-const courses = [
-  {
-    id: 1,
-    title: "اساسيات الطبخ",
-    description:
-      "الطبخ هو عبارةٌ عن عمليةٍ يتمّ من خلالها دمج الأطعمة، وإضافة البهارات، والتوابل والمنكهات المختلفة إليها بأساليبَ، وطرقٍ مختلفةٍ بهدف جعلها جاهزة للأكل، وقد اختلف مفهوم الطبخ في ال...",
-    price: 0,
-    image:
-      "https://tabasher-dev-storage.fra1.digitaloceanspaces.com/e005fcf3-acf7-4fd9-8122-e8e396a3d7d0.jpg",
-    lastUpdate: "",
-    requirements: ["فرن"],
-    output: ["الطبخ", "أساسيات", "مياه"],
-    topics: [
-      {
-        section: 1,
-        chief: "منال العالم",
-        title: "بطاطس بحشوة الجبن",
-      },
-      {
-        section: 2,
-        chief: "رمزي المعصب",
-        title: "المشروم",
-      },
-    ],
-  },
-];
-
 export default function Home({ courses }) {
-  console.log(courses[0]);
+  const [token, setToken] = useState(null);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    console.log(token);
+    setToken(token);
+  }, []);
+
   return (
-    <>
+    <UserContext.Provider value={{ token }}>
       <Nav />
       <div className={styles.container}>
         <Hero />
@@ -48,6 +29,24 @@ export default function Home({ courses }) {
         <ChiefInfo />
         <Footer />
       </div>
-    </>
+    </UserContext.Provider>
   );
 }
+
+export const getServerSideProps = async (context) => {
+  const res = await fetch(
+    "https://api.tabasher.dev/api/services/app/Curriculums/GetAll"
+  );
+
+  const data = await res.json();
+  const result = await data.result;
+  const lastCourse = await result[result.length - 1];
+
+  const courses = await [lastCourse];
+
+  return {
+    props: {
+      courses: courses || null,
+    },
+  };
+};

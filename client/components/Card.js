@@ -22,15 +22,17 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MediaCard({ course, courseDetails }) {
+export default function MediaCard({ course, courseDetails, token }) {
+  console.log(token, "lllllllllll");
   const classes = useStyles();
-  const slicedText = course.description.slice(0, 175) + "...";
-
+  const image = `https://tabasher-dev-storage.fra1.digitaloceanspaces.com/${course.imageUrl}`;
+  const slicedText =
+    course.description && course.description.slice(0, 175) + "...";
   return (
     <Card
       style={{
         width: "100%",
-        minWidth: 350,
+        minWidth: "250",
         borderRadius: 15,
         marginTop: 30,
         margin: "0 auto",
@@ -39,8 +41,8 @@ export default function MediaCard({ course, courseDetails }) {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={course.image}
-          title={course.title}
+          image={image}
+          title={course.name}
           component="img"
           alt="Contemplative Reptile"
           height="300"
@@ -64,7 +66,13 @@ export default function MediaCard({ course, courseDetails }) {
         }}
       >
         <Button
-          href={courseDetails ? "/#" : `/course/${course.id}`}
+          href={
+            token
+              ? courseDetails
+                ? "/#"
+                : `/course/${course.code}`
+              : "/user/register"
+          }
           className={classes.btn}
           style={{
             margin: "0 auto",
