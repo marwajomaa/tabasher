@@ -29,15 +29,13 @@ export default function MediaCard({ course, courseDetails, url }) {
   const price = (
     <h3
       style={{
-        fontSize: "1.5rem",
-        fontWeight: "500",
         direction: "rtl",
       }}
     >
-      <span style={{ fontWeight: "700", marginLeft: "5px" }}>
+      <span style={{ fontWeight: "500", marginLeft: "5px" }}>
         {course.price}
       </span>
-      <span style={{ fontWeight: "900" }}>ريال</span>
+      <span style={{ fontWeight: "500" }}>ريال</span>
     </h3>
   );
   const image = `https://tabasher-dev-storage.fra1.digitaloceanspaces.com/${course.imageUrl}`;
@@ -60,7 +58,7 @@ export default function MediaCard({ course, courseDetails, url }) {
           title={course.name}
           component="img"
           alt="Contemplative Reptile"
-          height="300"
+          height="250"
         />
         <CardContent style={{ background: "#f7f7f7" }}>
           <T variant="h4" component="h2" text={course.title} />

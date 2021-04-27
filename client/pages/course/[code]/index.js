@@ -67,7 +67,7 @@ export default function index({ course }) {
           <Title text="وصف الدورة" />
           <div
             style={{
-              maxWidth: "500px",
+              maxWidth: "900px",
               overflow: "hidden",
               fontSize: "1rem",
             }}
