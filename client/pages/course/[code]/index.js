@@ -67,9 +67,9 @@ export default function index({ course }) {
           <Title text="وصف الدورة" />
           <div
             style={{
-              maxWidth: "700px",
+              maxWidth: "500px",
               overflow: "hidden",
-              fontSize: "1.1rem",
+              fontSize: "1rem",
             }}
           >
             <h2 style={{ color: "#6c757d", marginBottom: "30px" }}>
