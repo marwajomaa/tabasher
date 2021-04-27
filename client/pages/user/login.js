@@ -7,6 +7,7 @@ import loginStyles from "../../styles/Login.module.css";
 export default function login() {
   const { push } = useRouter();
   const [values, setValue] = useState({});
+  const [error, setError] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -28,8 +29,8 @@ export default function login() {
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Methods":
             "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers":
-            "Origin, Content-Type, X-Auth-Token, Authorization, Accept,charset,boundary,Content-Length",
+          "Access-Control-Allow-Headers": "Origin, Content-Type",
+          mode: "cors",
         },
       });
 
@@ -44,12 +45,14 @@ export default function login() {
       console.log(res.data.result);
     } catch (err) {
       console.log(err.message);
+      setError(err.message);
     }
   };
 
   return (
     <div className={loginStyles.loginWrapper}>
       <h1>تسجيل الدخول</h1>
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleFormSubmit}>
         <div>
           <label for="email">
