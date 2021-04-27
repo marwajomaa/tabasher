@@ -10,17 +10,21 @@ import courseStyles from "../../../styles/courseDetails.module.css";
 export default function index({ course }) {
   const { token } = useAuth();
   const url = token ? "/" : "/user/register";
-  if (!course) return <p>تحميل الصفحة</p>;
+
   const courseSections = () =>
     course.sections.map((section, i) => {
       return (
         <div className={courseStyles.contentRightTable} key={section.id}>
           <div>
-            <h3>{i + 1}قسم</h3>
+            <h3>
+              <span style={{ fontSize: "1.1rem" }}>{i + 1}</span>
+              <span style={{ fontSize: "1.4rem" }}>قسم</span>
+            </h3>
             <h2>{section.name}</h2>
           </div>
           {section.lectures.map((lecture) => (
             <div
+              key={lecture.name}
               style={{
                 display: "flex",
                 justifyContent: "flex-end",
@@ -45,14 +49,29 @@ export default function index({ course }) {
           </div>
           <div className={courseStyles.RightTopChild}>
             <h2>مدة الدورة</h2>
-            <h3 style={{ fontSize: "1.5rem", fontWeight: "500" }}>
-              {course.totalHours} ساعة
+            <h3
+              style={{
+                fontSize: "1.5rem",
+                fontWeight: "500",
+                direction: "rtl",
+              }}
+            >
+              <span style={{ fontWeight: "900", marginLeft: "5px" }}>
+                {course.totalHours}
+              </span>
+              <span style={{ fontWeight: "900" }}>ساعة</span>
             </h3>
           </div>
         </div>
         <div className={courseStyles.contentRightDescription}>
           <Title text="وصف الدورة" />
-          <div style={{ maxWidth: "900px", overflow: "hidden" }}>
+          <div
+            style={{
+              maxWidth: "900px",
+              overflow: "hidden",
+              fontSize: "1.1rem",
+            }}
+          >
             <h2 style={{ color: "#6c757d", marginBottom: "30px" }}>
               {course.description}
             </h2>
@@ -60,6 +79,10 @@ export default function index({ course }) {
 
           <div style={{ margin: "2rem 0" }}>
             <Title text="ماذا سوف تتعلم؟" />
+            {JSON.parse(course.lessonsLearned).map((lesson, i, array) => {
+              if (i === array.length - 1) return <span>{lesson.value}</span>;
+              return <span> {lesson.value} ، </span>;
+            })}
           </div>
           <div>
             <Title text="مواضيع الدورة" />
