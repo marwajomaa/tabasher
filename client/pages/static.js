@@ -12,7 +12,6 @@ import styles from "../styles/Home.module.css";
 
 export default function Home({ courses }) {
   const [token, setToken] = useState(null);
-  console.log(courses);
   useEffect(() => {
     const token = localStorage.getItem("token");
     console.log(token);
@@ -25,7 +24,6 @@ export default function Home({ courses }) {
       <div className={styles.container}>
         <Hero />
         <Title text="عن الطبخ" />
-        <Title text="الدورات المقدمة" />
         <CoursesList courses={courses} />
         <DigitalCourses />
         <ChiefInfo />
@@ -35,7 +33,7 @@ export default function Home({ courses }) {
   );
 }
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
   const res = await fetch(
     "https://api.tabasher.dev/api/services/app/Curriculums/GetAll"
   );

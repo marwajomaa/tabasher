@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { UserContext } from "../context/userContext";
-import Nav from "../components/Nav";
-import Hero from "../components/MainHero";
-import CoursesList from "../components/CoursesList";
-import DigitalCourses from "../components/DigitalCourses";
-import Title from "../components/Title";
-import ChiefInfo from "../components/ChiefInfo";
-import Footer from "../components/Footer";
+import { UserContext } from "../../context/userContext";
+import Nav from "../../components/Nav";
+import CoursesList from "../../components/CoursesList";
+import Footer from "../../components/Footer";
 
-import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
 
 export default function Home({ courses }) {
   const [token, setToken] = useState(null);
-  console.log(courses);
   useEffect(() => {
     const token = localStorage.getItem("token");
     console.log(token);
@@ -23,12 +18,8 @@ export default function Home({ courses }) {
     <UserContext.Provider value={{ token }}>
       <Nav />
       <div className={styles.container}>
-        <Hero />
-        <Title text="عن الطبخ" />
-        <Title text="الدورات المقدمة" />
+        <h1>📒 الدورات المسجلة</h1>
         <CoursesList courses={courses} />
-        <DigitalCourses />
-        <ChiefInfo />
         <Footer />
       </div>
     </UserContext.Provider>
