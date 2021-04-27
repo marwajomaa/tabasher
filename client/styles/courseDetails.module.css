@@ -1,7 +1,7 @@
 .courseContainer {
   display: flex;
   justify-content: space-between;
-  padding: 3rem 4rem;
+  padding: 3rem;
 }
 
 .contentLeft {
@@ -9,7 +9,7 @@
 }
 
 .contentRight {
-  width: 60%;
+  width: 55%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -52,13 +52,13 @@
 }
 
 .contentRightDescription span {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: #6c757d;
 }
 
 .contentRightTable {
-  width: 100%;
+  width: 60%;
   float: right;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 10px 0 -5px #eee,
     0 5px 1px -1px rgba(184, 171, 171, 0.15);
