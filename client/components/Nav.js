@@ -15,7 +15,7 @@ const Nav = () => {
               <h1>اهلا وسهلا</h1>
             </Link>
           ) : (
-            <Link href="/">
+            <Link href="/user/login">
               <h1>تسجيل دخول</h1>
             </Link>
           )}
