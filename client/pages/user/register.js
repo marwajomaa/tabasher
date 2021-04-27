@@ -18,7 +18,13 @@ export default function register() {
       <h1>تسجيل مستخدم جديد</h1>
       <h1>
         هل انت مسجل بالاكاديمية من قبل؟
-        <Link href="/user/login">سجل دخولك من هنا</Link>
+        <Link href="/user/login">
+          <span
+            style={{ color: "blue", marginRight: "15px", cursor: "pointer" }}
+          >
+            سجل دخولك من هنا
+          </span>
+        </Link>
       </h1>
     </div>
   );

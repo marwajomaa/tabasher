@@ -17,6 +17,15 @@
   margin-left: 1rem;
 }
 
+.contentRightView {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-left: 1rem;
+  margin-left: 1rem;
+}
+
 .contentRightTop {
   width: 100%;
   display: flex;
@@ -72,6 +81,15 @@
   background: #00000008;
 }
 
+.iframe {
+  height: 500px;
+  width: 60%;
+  position: absolute;
+  top: 10;
+  left: 5;
+  border: 1px black solid;
+}
+
 @media (max-width: 900px) {
   .courseContainer {
     padding: 0;
@@ -98,5 +116,24 @@
     display: block;
     width: 100%;
     margin: 0 auto;
+  }
+  .contentRight {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .contentRightView {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 200px;
+  }
+  .iframe {
+    height: 300px;
+    width: 100%;
+    position: absolute;
+    top: 10;
+    left: 0;
+    border: 1px black solid;
   }
 }

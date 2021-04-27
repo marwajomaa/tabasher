@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { useAuth } from "../hooks/useAuth";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Card,
@@ -22,8 +23,9 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MediaCard({ course, courseDetails, token }) {
-  console.log(token, "lllllllllll");
+export default function MediaCard({ course, courseDetails, url }) {
+  console.log(course);
+  const { token } = useAuth();
   const classes = useStyles();
   const image = `https://tabasher-dev-storage.fra1.digitaloceanspaces.com/${course.imageUrl}`;
   const slicedText =
@@ -66,13 +68,7 @@ export default function MediaCard({ course, courseDetails, token }) {
         }}
       >
         <Button
-          href={
-            token
-              ? courseDetails
-                ? "/#"
-                : `/course/${course.code}`
-              : "/user/register"
-          }
+          href={url}
           className={classes.btn}
           style={{
             margin: "0 auto",
@@ -86,14 +82,15 @@ export default function MediaCard({ course, courseDetails, token }) {
             fontWeight: "bold",
           }}
         >
-          {courseDetails ? "شراء مباشر" : "اشترك الان"}
+          {token
+            ? "الدخول الى الدورة"
+            : courseDetails
+            ? "شراء مباشر"
+            : "اشترك الان"}
         </Button>
         {courseDetails && (
           <div style={{ textAlign: "right", marginRight: "-120px" }}>
             <Title text="متطلبات الدورة" />
-            {course.requirements?.map((item) => (
-              <h3>{item}</h3>
-            ))}
           </div>
         )}
       </CardActions>
